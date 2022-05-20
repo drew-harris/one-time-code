@@ -43,11 +43,11 @@ func main() {
 	})
 
 	// Get a test value to ensure connection
-	_, err = rdb.Get(context.Background(), "TESTK").Result()
+	ping, err := rdb.Ping(context.Background()).Result()
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("Got test value successfully")
+	fmt.Println(ping)
 
 	// Set up HTTP server
 	fmt.Println("Starting HTTP Server")
